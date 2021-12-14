@@ -62,13 +62,14 @@ def save_visualisation(octopi,c):
         for k in range(octopi.shape[1]):
             octopi_large[j * scale: (j+1) * scale, k * scale: (k+1) * scale] = octopi[j, k]
     octopi_large=np.where(octopi_large==0,15,octopi_large)
-    plt.imsave(framen, octopi_large, cmap='pink',vmin=0, vmax=15)
+    plt.imsave(framen, octopi_large, cmap='inferno',vmin=0, vmax=15)
 
 def parttwo():
     a=readinfile(fn)
     octopi=np.array(a)
     counter=0
-    while((octopi==0).sum()<100):
+    while(counter<400):
+    #while((octopi==0).sum()<100):
         counter+=1
         octopi=energystep(octopi)
         print((octopi==0).sum())
